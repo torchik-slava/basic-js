@@ -5,13 +5,11 @@ class VigenereCipheringMachine {
 	_init (message, key) {
 		if(!message || !key) throw new Error('Not all params entered!');
 
-		if (key.length>=message.length) {
+		if (key.length >= message.length) {
 			key = key.slice(0, message.length);
-		} else {
-			let mult = Math.floor(message.length/key.length);
-			while (mult>0) {
-				key +=key;
-				mult--;
+		} else {			
+			while (message.length > key.length) {
+				key +=key;				
 			}
 			key = key.slice(0, message.length);
 		}
